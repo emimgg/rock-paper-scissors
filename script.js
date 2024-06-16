@@ -17,8 +17,6 @@ console.log(computerScore + " points for the computer!");
 
 
 function playRound(humanChoice, computerChoice) {
-        humanChoice = getHumanChoice();
-        computerChoice = getComputerChoice();
 
     if (humanChoice === PAPER) {
         if (computerChoice === ROCK) {
