@@ -14,9 +14,10 @@ console.log(humanScore + " points for you!");
 console.log(computerScore + " points for the computer!");
 
 
-
-
 function playRound(humanChoice, computerChoice) {
+    
+    console.log("You chose: " + humanChoice);
+    console.log("The computer chose: " + computerChoice);
 
     if (humanChoice === PAPER) {
         if (computerChoice === ROCK) {
