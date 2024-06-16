@@ -5,17 +5,27 @@ const SCISSORS = "SCISSORS";
 let humanScore = 0;
 let computerScore = 0;
 
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
+console.log(humanScore + " points for you!");
+console.log(computerScore + " points for the computer!");
+
+
+
 
 function playRound(humanChoice, computerChoice) {
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
+        humanChoice = getHumanChoice();
+        computerChoice = getComputerChoice();
 
     if (humanChoice === PAPER) {
         if (computerChoice === ROCK) {
             console.log("You won! " + humanChoice + " beats " + computerChoice);
             ++humanScore;
         } else if (computerChoice === SCISSORS) {
-            console.log("You lost! " + computerChoice + " beats " + userChoice);
+            console.log("You lost! " + computerChoice + " beats " + humanChoice);
             ++computerScore;
         } else {
             console.log("It's a draw!")
@@ -27,7 +37,7 @@ function playRound(humanChoice, computerChoice) {
             console.log("You won! " + humanChoice + " beats " + computerChoice);
             ++humanScore;
         } else if (computerChoice === PAPER) {
-            console.log("You lost! " + computerChoice + " beats " + userChoice);
+            console.log("You lost! " + computerChoice + " beats " + humanChoice);
             ++computerScore;
         } else {
             console.log("It's a draw!")
@@ -39,7 +49,7 @@ function playRound(humanChoice, computerChoice) {
             console.log("You won! " + humanChoice + " beats " + computerChoice);
             ++humanScore;
         } else if (computerChoice === ROCK) {
-            console.log("You lost! " + computerChoice + " beats " + userChoice);
+            console.log("You lost! " + computerChoice + " beats " + humanChoice);
             ++computerScore;
         } else {
             console.log("It's a draw!")
@@ -47,22 +57,25 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function getComputerChoice(pcChoice) {
+function getComputerChoice(computerSelection) {
 
-    pcChoice = Math.floor(Math.random() * 3) + 1;
+    let num = Math.floor(Math.random() * 3) + 1;
 
-    if (pcChoice === 1) {
-        return ROCK;
-    } else if (pcChoice === 2) {
-        return PAPER;
+    if (num === 1) {
+        computerSelection = ROCK;
+        return computerSelection;
+    } else if (num === 2) {
+        computerSelection = PAPER;
+        return computerSelection;
     } else {
-        return SCISSORS;
+        computerSelection = SCISSORS;
+        return computerSelection;
     }
 }
 
-function getHumanChoice(userInput) {
+function getHumanChoice(humanChoice) {
 
     userInput = prompt("Choose between rock, paper or scissors");
-    userChoice = userInput.toLocaleUpperCase();
-    return userChoice;
+    humanChoice = userInput.toLocaleUpperCase();
+    return humanChoice;
 }
