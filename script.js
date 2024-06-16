@@ -5,19 +5,34 @@ const SCISSORS = "SCISSORS";
 let humanScore = 0;
 let computerScore = 0;
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
 
-console.log(humanScore + " points for you!");
-console.log(computerScore + " points for the computer!");
+playGame();
+
+
+function playGame() {
+    for (i = 0; i <5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+
+        console.log(humanScore + " points for you!");
+        console.log(computerScore + " points for the computer!");
+    }
+    console.log("FINAL SCORE: \n YOU: " + humanScore + " vs COMPUTER: " + computerScore + "\n GOOD GAME!")
+}
+
 
 
 function playRound(humanChoice, computerChoice) {
     
     console.log("You chose: " + humanChoice);
     console.log("The computer chose: " + computerChoice);
+
+    if (humanChoice === computerChoice) {
+        console.log("It's a draw!");
+    }
 
     if (humanChoice === PAPER) {
         if (computerChoice === ROCK) {
@@ -26,9 +41,7 @@ function playRound(humanChoice, computerChoice) {
         } else if (computerChoice === SCISSORS) {
             console.log("You lost! " + computerChoice + " beats " + humanChoice);
             ++computerScore;
-        } else {
-            console.log("It's a draw!")
-        }
+        } 
     }
 
     if (humanChoice === ROCK) {
@@ -38,8 +51,6 @@ function playRound(humanChoice, computerChoice) {
         } else if (computerChoice === PAPER) {
             console.log("You lost! " + computerChoice + " beats " + humanChoice);
             ++computerScore;
-        } else {
-            console.log("It's a draw!")
         }
     }
 
@@ -50,31 +61,25 @@ function playRound(humanChoice, computerChoice) {
         } else if (computerChoice === ROCK) {
             console.log("You lost! " + computerChoice + " beats " + humanChoice);
             ++computerScore;
-        } else {
-            console.log("It's a draw!")
-        }
+        } 
     }
 }
 
-function getComputerChoice(computerSelection) {
+function getComputerChoice() {
 
     let num = Math.floor(Math.random() * 3) + 1;
 
     if (num === 1) {
-        computerSelection = ROCK;
-        return computerSelection;
+        return ROCK;
     } else if (num === 2) {
-        computerSelection = PAPER;
-        return computerSelection;
+        return PAPER;
     } else {
-        computerSelection = SCISSORS;
-        return computerSelection;
+        return SCISSORS;
     }
 }
 
-function getHumanChoice(humanChoice) {
+function getHumanChoice() {
 
-    userInput = prompt("Choose between rock, paper or scissors");
-    humanChoice = userInput.toLocaleUpperCase();
+    let humanChoice = prompt("Choose between rock, paper or scissors").toUpperCase();
     return humanChoice;
 }
