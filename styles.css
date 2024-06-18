@@ -23,7 +23,7 @@ body {
 
 .game {
     display: flex;
-    max-width: 900px;
+    max-width: 980px;
     margin: 64px auto;
     justify-content: space-between;
     padding: 16px;
@@ -37,18 +37,18 @@ body {
     justify-content: space-evenly;
     height: 240px;
     width: 380px;
-    padding: 8px;
+    padding: 8px 16px;
     /* outline: 2px solid cyan; */
     flex: 1;
-    margin: 0 24px;
-    gap: 48px;
+    margin: 0 18px;
+    gap: 28px;
     border-radius: 10px;
     box-shadow: 0 0 20px 2px rgb(199, 199, 199);
 }
 
 .choices {
     display: flex;
-    gap: 16px;
+    gap: 24px;
 }
 
 .btn-choice {
@@ -63,4 +63,8 @@ body {
     display: flex;
     align-items: center;
     font-size: 36px;
+    width: 60px;
+    text-align: center;
+    justify-content: space-between;
+    padding: 2px;
 }
