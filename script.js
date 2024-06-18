@@ -7,7 +7,7 @@ let computerScore = 0;
 
 
 
-playGame();
+// playGame();
 
 
 function playGame() {
@@ -78,8 +78,8 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
+// function getHumanChoice() {
 
-    let humanChoice = prompt("Choose between rock, paper or scissors").toUpperCase();
-    return humanChoice;
-}
+//     let humanChoice = prompt("Choose between rock, paper or scissors").toUpperCase();
+//     return humanChoice;
+// }
