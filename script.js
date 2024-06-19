@@ -48,7 +48,7 @@ function playRound(playerChoice, computerChoice) {
         result = `You won! You chose ${playerChoice} and PARELORD chose ${computerChoice}!`;
         playerScore++;
     } else {
-        result = `You lost! You chose ${computerChoice} and PARELORD chose ${playerChoice}...`;
+        result = `You lost! You chose ${playerChoice} and PARELORD chose ${computerChoice}...`;
         computerScore++;
     }
 
