@@ -22,9 +22,9 @@ const resultList = document.createElement("ul");
 logContainer.appendChild(resultList);
 gameWrapper.appendChild(logContainer);
 
-rock.addEventListener("click", () => playRound("ROCK", getComputerChoice()));
-paper.addEventListener("click", () => playRound("PAPER", getComputerChoice()));
-scissors.addEventListener("click", () => playRound("SCISSORS", getComputerChoice()));
+rock.addEventListener("click", () => playRound("PAREPIEDRA", getComputerChoice()));
+paper.addEventListener("click", () => playRound("PAREPAPEL", getComputerChoice()));
+scissors.addEventListener("click", () => playRound("PARETIJERAS", getComputerChoice()));
 
 function playGame() {
     for (i = 0; i <5; i++) {
@@ -33,8 +33,6 @@ function playGame() {
 
         playRound(humanSelection, computerSelection);
 
-        console.log(humanScore + " points for you!");
-        console.log(computerScore + " points for the computer!");
     }
 }
 
@@ -47,9 +45,9 @@ function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
         result = "It's a draw!";
     } else if (
-        (playerChoice === "ROCK" && computerChoice === "SCISSORS") ||
-        (playerChoice === "PAPER" && computerChoice === "ROCK") ||
-        (playerChoice === "SCISSORS" && computerChoice === "PAPER")
+        (playerChoice === "PAREPIEDRA" && computerChoice === "PARETIJERAS") ||
+        (playerChoice === "PAREPAPEL" && computerChoice === "PAREPIEDRA") ||
+        (playerChoice === "PARETIJERAS" && computerChoice === "PAREPAPEL")
     ) {
         result = `You won! You chose ${playerChoice} and PARELORD chose ${computerChoice}!`;
         playerScore++;
@@ -111,11 +109,11 @@ function getComputerChoice(computerChoice) {
     let choice = "";
 
     switch (num) {
-        case 1: choice = "ROCK";
+        case 1: choice = "PAREPIEDRA";
         break;
-        case 2: choice = "PAPER";
+        case 2: choice = "PAREPAPEL";
         break;
-        case 3: choice = "SCISSORS";
+        case 3: choice = "PARETIJERAS";
         break;
     }
     return choice;
