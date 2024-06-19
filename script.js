@@ -1,3 +1,4 @@
+
 let playerScore = 0;
 let computerScore = 0;
 
@@ -9,6 +10,7 @@ const scissors = document.querySelector("#scissors-btn");
 const gameWrapper = document.querySelector(".game-wrapper");
 const playerScoreboard = document.querySelector(".player-score");
 const computerScoreboard = document.querySelector(".computer-score");
+const scoreboard = document.querySelector(".scoreboard");
 
 // Creating elements to append 
 const logContainer = document.createElement("div");
@@ -20,32 +22,28 @@ const resultList = document.createElement("ul");
 logContainer.appendChild(resultList);
 gameWrapper.appendChild(logContainer);
 
-
-
-
 rock.addEventListener("click", () => playRound("ROCK", getComputerChoice()));
 paper.addEventListener("click", () => playRound("PAPER", getComputerChoice()));
 scissors.addEventListener("click", () => playRound("SCISSORS", getComputerChoice()));
 
-// function playGame() {
-//     for (i = 0; i <5; i++) {
-//         const humanSelection = getHumanChoice();
-//         const computerSelection = getComputerChoice();
+function playGame() {
+    for (i = 0; i <5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
 
-//         playRound(humanSelection, computerSelection);
+        playRound(humanSelection, computerSelection);
 
-//         console.log(humanScore + " points for you!");
-//         console.log(computerScore + " points for the computer!");
-//     }
-//     console.log("FINAL SCORE: \n YOU: " + humanScore + " vs COMPUTER: " + computerScore + "\n GOOD GAME!")
-// }
+        console.log(humanScore + " points for you!");
+        console.log(computerScore + " points for the computer!");
+    }
+}
 
 
 
 function playRound(playerChoice, computerChoice) {
 
     let result = "";
-
+    
     if (playerChoice === computerChoice) {
         result = "It's a draw!";
     } else if (
@@ -61,8 +59,8 @@ function playRound(playerChoice, computerChoice) {
     }
 
     appendResultsOfRound(result);
-
-    console.log(`Player Score: ${playerScore}, PARELORD Score: ${computerScore}`);
+    playerScoreboard.textContent = playerScore;
+    computerScoreboard.textContent = computerScore;
 
 }
 
@@ -73,12 +71,32 @@ function appendResultsOfRound(roundResult) {
     resultListItem.textContent = roundResult;
     resultList.appendChild(resultListItem);
 
+    if (playerScore === 5 || computerScore === 5) {
+        endGame();
+    }
+
 }
 
-function addToScore(playerScore, computerScore) {
+function endGame() {
+
+    let winner = playerScore > computerScore ? "Player" : "PARELORD";
+    let loser = playerScore > computerScore ? "PARELORD" : "Player";
+    alert(`Game over! ${winner} has broken the ass of ${loser}!`);
+
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+}
+
+function reset() {
+
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreboard.textContent = playerScore;
+    computerScoreboard.textContent = computerScore;
+    resultList.innerHTML = "";
     
 }
-
 
 // Random computer choice
 function getComputerChoice(computerChoice) {
@@ -95,7 +113,5 @@ function getComputerChoice(computerChoice) {
         break;
     }
     return choice;
+
 }
-
-
-
