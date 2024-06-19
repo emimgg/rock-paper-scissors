@@ -1,4 +1,4 @@
-let humanScore = 0;
+let playerScore = 0;
 let computerScore = 0;
 
 // Declaring variables from DOM
@@ -7,11 +7,14 @@ const rock = document.querySelector("#rock-btn");
 const paper = document.querySelector("#paper-btn");
 const scissors = document.querySelector("#scissors-btn");
 const gameWrapper = document.querySelector(".game-wrapper");
+const playerScoreboard = document.querySelector(".player-score");
+const computerScoreboard = document.querySelector(".computer-score");
 
 // Creating elements to append 
 const logContainer = document.createElement("div");
 logContainer.classList.add("log");
-logContainer.style = "height : 50px; textAlign : center";
+logContainer.style = "height : 50px";
+logContainer.style.textAlign = "center";
 
 const resultList = document.createElement("ul");
 logContainer.appendChild(resultList);
@@ -20,9 +23,9 @@ gameWrapper.appendChild(logContainer);
 
 
 
-rock.addEventListener("click", () => playRound("rock", getComputerChoice()));
-paper.addEventListener("click", () => playRound("paper", getComputerChoice()));
-scissors.addEventListener("click", () => playRound("scissors", getComputerChoice()));
+rock.addEventListener("click", () => playRound("ROCK", getComputerChoice()));
+paper.addEventListener("click", () => playRound("PAPER", getComputerChoice()));
+scissors.addEventListener("click", () => playRound("SCISSORS", getComputerChoice()));
 
 // function playGame() {
 //     for (i = 0; i <5; i++) {
@@ -39,26 +42,27 @@ scissors.addEventListener("click", () => playRound("scissors", getComputerChoice
 
 
 
-function playRound(humanChoice, computerChoice) {
+function playRound(playerChoice, computerChoice) {
 
     let result = "";
 
-    if (humanChoice === computerChoice) {
+    if (playerChoice === computerChoice) {
         result = "It's a draw!";
     } else if (
-        (humanChoice === "rock" && computerChoice === "scissors") ||
-        (humanChoice === "paper" && computerChoice === "rock") ||
-        (humanChoice === "scissors" && computerChoice === "paper")
+        (playerChoice === "ROCK" && computerChoice === "SCISSORS") ||
+        (playerChoice === "PAPER" && computerChoice === "ROCK") ||
+        (playerChoice === "SCISSORS" && computerChoice === "PAPER")
     ) {
-        result = `You won! You chose ${humanChoice} and PARELORD chose ${computerChoice}!`;
-        humanScore++;
+        result = `You won! You chose ${playerChoice} and PARELORD chose ${computerChoice}!`;
+        playerScore++;
     } else {
-        result = `You lost! You chose ${computerChoice} and PARELORD chose ${humanChoice}...`;
+        result = `You lost! You chose ${computerChoice} and PARELORD chose ${playerChoice}...`;
         computerScore++;
     }
 
     appendResultsOfRound(result);
-    console.log(`Player Score: ${humanScore}, PARELORD Score: ${computerScore}`);
+
+    console.log(`Player Score: ${playerScore}, PARELORD Score: ${computerScore}`);
 
 }
 
@@ -71,6 +75,10 @@ function appendResultsOfRound(roundResult) {
 
 }
 
+function addToScore(playerScore, computerScore) {
+    
+}
+
 
 // Random computer choice
 function getComputerChoice(computerChoice) {
@@ -79,11 +87,11 @@ function getComputerChoice(computerChoice) {
     let choice = "";
 
     switch (num) {
-        case 1: choice = "rock";
+        case 1: choice = "ROCK";
         break;
-        case 2: choice = "paper";
+        case 2: choice = "PAPER";
         break;
-        case 3: choice = "scissors";
+        case 3: choice = "SCISSORS";
         break;
     }
     return choice;
