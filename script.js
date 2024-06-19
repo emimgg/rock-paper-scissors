@@ -1,9 +1,23 @@
+let humanScore = 0;
+let computerScore = 0;
+
+// Declaring variables from DOM
 const buttons = document.querySelector(".choices");
 const rock = document.querySelector("#rock-btn");
 const paper = document.querySelector("#paper-btn");
 const scissors = document.querySelector("#scissors-btn");
-let humanScore = 0;
-let computerScore = 0;
+const gameWrapper = document.querySelector(".game-wrapper");
+
+// Creating elements to append 
+const logContainer = document.createElement("div");
+logContainer.classList.add("log");
+logContainer.style = "height : 50px; textAlign : center";
+
+const resultList = document.createElement("ul");
+logContainer.appendChild(resultList);
+gameWrapper.appendChild(logContainer);
+
+
 
 
 rock.addEventListener("click", () => playRound("rock", getComputerChoice()));
@@ -26,44 +40,38 @@ scissors.addEventListener("click", () => playRound("scissors", getComputerChoice
 
 
 function playRound(humanChoice, computerChoice) {
+    let result = "";
 
     if (humanChoice === computerChoice) {
-        console.log("It's a draw!");
+        result = "It's a draw!";
+    } else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+        result = `You won! You chose ${humanChoice} and PARELORD ${computerChoice}!`;
+        humanScore++;
+    } else {
+        result = `You lost! You chose ${computerChoice} and PARELORD ${humanChoice}...`;
+        computerScore++;
     }
 
-    if (humanChoice === "paper") {
-        if (computerChoice === "rock") {
-            console.log("You won! " + humanChoice + " beats " + computerChoice);
-            ++humanScore;
-        } else if (computerChoice === "scissors") {
-            console.log("You lost! " + computerChoice + " beats " + humanChoice);
-            ++computerScore;
-        } 
-    }
+    appendResultsPerRound(result);
+    console.log(`Player Score: ${humanScore}, PARELORD Score: ${computerScore}`);
 
-    if (humanChoice === "rock") {
-        if (computerChoice === "scissors") {
-            console.log("You won! " + humanChoice + " beats " + computerChoice);
-            ++humanScore;
-        } else if (computerChoice === "paper") {
-            console.log("You lost! " + computerChoice + " beats " + humanChoice);
-            ++computerScore;
-        }
-    }
-
-    if (humanChoice === "scissors") {
-        if (computerChoice === "paper") {
-            console.log("You won! " + humanChoice + " beats " + computerChoice);
-            ++humanScore;
-        } else if (computerChoice === "rock") {
-            console.log("You lost! " + computerChoice + " beats " + humanChoice);
-            ++computerScore;
-        } 
-    }
-    console.log("You chose: " + humanChoice);
-    console.log("The computer chose: " + computerChoice);
 }
 
+
+function appendResultsPerRound(roundResult) {
+
+    const resultListItem = document.createElement("li");
+    resultListItem.textContent = roundResult;
+    resultList.appendChild(resultListItem);
+
+}
+
+
+// Random computer choice
 function getComputerChoice(computerChoice) {
 
     let num = Math.floor(Math.random() * 3) + 1;

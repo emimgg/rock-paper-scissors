@@ -21,7 +21,7 @@ body {
     font-size: 28px;
 }
 
-.game {
+.main-container {
     display: flex;
     max-width: 980px;
     margin: 64px auto;
@@ -67,4 +67,10 @@ body {
     text-align: center;
     justify-content: space-between;
     padding: 2px;
+}
+
+.game-wrapper {
+    /* outline: 2px solid red; */
+    display: flex;
+    flex-direction: column;
 }
