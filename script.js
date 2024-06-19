@@ -40,6 +40,7 @@ scissors.addEventListener("click", () => playRound("scissors", getComputerChoice
 
 
 function playRound(humanChoice, computerChoice) {
+
     let result = "";
 
     if (humanChoice === computerChoice) {
@@ -49,20 +50,20 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === "paper" && computerChoice === "rock") ||
         (humanChoice === "scissors" && computerChoice === "paper")
     ) {
-        result = `You won! You chose ${humanChoice} and PARELORD ${computerChoice}!`;
+        result = `You won! You chose ${humanChoice} and PARELORD chose ${computerChoice}!`;
         humanScore++;
     } else {
-        result = `You lost! You chose ${computerChoice} and PARELORD ${humanChoice}...`;
+        result = `You lost! You chose ${computerChoice} and PARELORD chose ${humanChoice}...`;
         computerScore++;
     }
 
-    appendResultsPerRound(result);
+    appendResultsOfRound(result);
     console.log(`Player Score: ${humanScore}, PARELORD Score: ${computerScore}`);
 
 }
 
 
-function appendResultsPerRound(roundResult) {
+function appendResultsOfRound(roundResult) {
 
     const resultListItem = document.createElement("li");
     resultListItem.textContent = roundResult;
