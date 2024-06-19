@@ -32,14 +32,10 @@ function playGame() {
         const computerSelection = getComputerChoice();
 
         playRound(humanSelection, computerSelection);
-
     }
 }
 
-
-
 function playRound(playerChoice, computerChoice) {
-
     let result = "";
     
     if (playerChoice === computerChoice) {
@@ -59,12 +55,9 @@ function playRound(playerChoice, computerChoice) {
     appendResultsOfRound(result);
     playerScoreboard.textContent = playerScore;
     computerScoreboard.textContent = computerScore;
-
 }
 
-
 function appendResultsOfRound(roundResult) {
-
     const resultListItem = document.createElement("li");
     resultListItem.textContent = roundResult;
     resultList.appendChild(resultListItem);
@@ -72,11 +65,9 @@ function appendResultsOfRound(roundResult) {
     if (playerScore === 5 || computerScore === 5) {
         endGame();
     }
-
 }
 
 function endGame() {
-
     let winner = playerScore > computerScore ? "Player" : "PARELORD";
     let loser = playerScore > computerScore ? "PARELORD" : "Player";
     
@@ -93,18 +84,15 @@ function endGame() {
 }
 
 function reset() {
-
     playerScore = 0;
     computerScore = 0;
     playerScoreboard.textContent = playerScore;
     computerScoreboard.textContent = computerScore;
     resultList.innerHTML = "";
-
 }
 
 // Random computer choice
 function getComputerChoice(computerChoice) {
-
     let num = Math.floor(Math.random() * 3) + 1;
     let choice = "";
 
@@ -117,5 +105,4 @@ function getComputerChoice(computerChoice) {
         break;
     }
     return choice;
-
 }
