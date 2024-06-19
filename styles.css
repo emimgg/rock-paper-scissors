@@ -24,7 +24,7 @@ body {
 .main-container {
     display: flex;
     max-width: 1100px;
-    margin: 64px auto;
+    margin: 22px auto;
     justify-content: space-between;
     padding: 16px;
     /* border: 1px solid gray; */

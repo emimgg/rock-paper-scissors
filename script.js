@@ -81,7 +81,13 @@ function endGame() {
 
     let winner = playerScore > computerScore ? "Player" : "PARELORD";
     let loser = playerScore > computerScore ? "PARELORD" : "Player";
-    alert(`Game over! ${winner} has broken the ass of ${loser}!`);
+    
+    const gameOver = document.createElement("h5");
+    gameOver.textContent = `Game over! ${winner} has broken the ass of ${loser}!`
+    gameOver.style.color = "#2eb774";
+    gameOver.style.fontSize = "24px";
+    gameOver.style.fontWeight = "600";
+    logContainer.appendChild(gameOver);
 
     rock.disabled = true;
     paper.disabled = true;
@@ -95,7 +101,7 @@ function reset() {
     playerScoreboard.textContent = playerScore;
     computerScoreboard.textContent = computerScore;
     resultList.innerHTML = "";
-    
+
 }
 
 // Random computer choice
